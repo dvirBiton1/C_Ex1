@@ -2,23 +2,6 @@
 #include <math.h>
 #include "NumClass.h"
 
-int isPalindrome(int num);
-int myPow(int base, int exp);
-int isArmstrong(int num);
-
-int myPow(int base, int exp)
-{
-    int sum = 1;
-    if (exp == 0)
-    {
-        return 1;
-    }
-    for (int i = 1; i <= exp; i++)
-    {
-        sum *= base;
-    }
-    return sum;
-}
 int isArmstrong(int num)
 {
     int temp = num;
@@ -37,7 +20,7 @@ int isArmstrong(int num)
     temp = num;
     while (temp != 0)
     {
-        counter1 = myPow(temp % 10, countDigit);
+        counter1 = (int) pow(temp % 10, countDigit);
         counter2 += counter1;
         temp = temp / 10;
     }

@@ -2,9 +2,6 @@
 #include <math.h>
 #include "NumClass.h"
 
-int isPrime(int num);
-int isStrong(int num);
-
 int isPrime(int num)
 {
     if (num <= 1)
