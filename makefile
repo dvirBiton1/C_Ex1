@@ -1,24 +1,24 @@
 .PHONY = all clean all
 CC = gcc
 AR = ar
-loopFails = basicClassification.o advancedClassificationLoop.o
-recFails = basicClassification.o advancedClassificationRecursion.o
+loop = basicClassification.o advancedClassificationLoop.o
+recursive = basicClassification.o advancedClassificationRecursion.o
 CFLAGS= -Wall -g
-all: libclassloops.a libclassrec.a libclassrec.so libclassloops.so mains maindloop maindrec
+all: recursived loopd recursives loops mains maindloop maindrec
 mains: main.o libclassrec.a
 	$(CC) $(CFLAGS)  -o mains main.o libclassrec.a -lm
 maindloop: main.o libclassloops.so 
-	$(CC) $(CFLAGS)  -o maindloop main.o libclassloops.so -lm
+	$(CC) $(CFLAGS)  -o maindloop main.o libclassloops.so  ./libclassloops.so -lm
 maindrec: main.o libclassrec.so 
-	$(CC) $(CFLAGS)  -o maindrec main.o libclassrec.so -lm
-libclassloops.a: $(loopFails)
-	$(AR) -rcs libclassloops.a $(loopFails)
-libclassrec.a: $(recFails)
-	$(AR) -rcs libclassrec.a $(recFails)
-libclassloops.so: $(loopFails)
-	$(CC) -shared -o libclassloops.so $(loopFails) -lm
-libclassrec.so: $(recFails)
-	$(CC) -shared -o libclassrec.so $(recFails) -lm
+	$(CC) $(CFLAGS)  -o maindrec main.o libclassrec.so  ./libclassrec.so -lm
+loops: $(loop)
+	$(AR) -rcs libclassloops.a $(loop)
+recursives: $(recursive)
+	$(AR) -rcs libclassrec.a $(recursive)
+loopd: $(loop)
+	$(CC) -shared -o libclassloops.so $(loop) -lm
+recursived: $(recursive)
+	$(CC) -shared -o libclassrec.so $(recursive) -lm
 basicClassification.o: basicClassification.c NumClass.h
 	$(CC) $(CFLAGS) -c basicClassification.c -lm
 advancedClassificationLoop.o: advancedClassificationLoop.c NumClass.h
