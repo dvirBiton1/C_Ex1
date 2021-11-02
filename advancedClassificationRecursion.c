@@ -42,8 +42,6 @@ int isArmstrong(int num)
 {
     int temp = num;
     int countDigit = (int)log10(num) + 1;
-    int counter1 = 0;
-    int counter2 = 0;
     if (num < 0)
     {
         return 0;
