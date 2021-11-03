@@ -4,8 +4,12 @@
 int main(){
     int min;
     int max;
-    scanf("%d", &min);
-    scanf("%d", &max);
+    do
+    {
+        scanf("%d", &min);
+        scanf("%d", &max);
+    } while (min <=0 || max <=0);
+    
     printf("The Armstrong numbers are:");
     for (int i = min; i <= max; i++)
     {
@@ -38,5 +42,6 @@ int main(){
             printf(" %d", i);
         }
     }
+    printf("\n");
     return 0;
 }
