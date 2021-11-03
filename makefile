@@ -14,9 +14,9 @@ all: libclassloops.a libclassloops.so libclassrec.a libclassrec.so mains maindre
 mains: main.o libclassrec.a
 	$(CC) $(CFLAGS)  -o mains main.o libclassrec.a -lm
 maindloop: main.o libclassloops.so 
-	$(CC) $(CFLAGS)  -o maindloop main.o libclassloops.so  ./libclassloops.so -lm
+	$(CC) $(CFLAGS)  -o maindloop main.o ./libclassloops.so -lm
 maindrec: main.o libclassrec.so 
-	$(CC) $(CFLAGS)  -o maindrec main.o libclassrec.so  ./libclassrec.so -lm
+	$(CC) $(CFLAGS)  -o maindrec main.o ./libclassrec.so -lm
 libclassloops.a: $(loop)
 	$(AR) -rcs libclassloops.a $(loop)
 libclassloops.so: $(loop)
